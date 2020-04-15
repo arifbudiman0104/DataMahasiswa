@@ -46,12 +46,9 @@ public class DisplayMhs extends AppCompatActivity {
                 id_To_Update = Value;
                 rs.moveToFirst();
 
-                String no =
-                        rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_NIM));
-                String nam =
-                        rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_NAMA));
-                String phon =
-                        rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_PHONE));
+                String no = rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_NIM));
+                String nam = rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_NAMA));
+                String phon = rs.getString(rs.getColumnIndex(DBHelper.MHS_COLUMN_PHONE));
                 if (!rs.isClosed())  {
                     rs.close();
                 }
@@ -95,7 +92,7 @@ public class DisplayMhs extends AppCompatActivity {
             nama.getText().toString().equals("")||
                 phone.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(),
-                    "DataHarus Diisi Semua!", Toast.LENGTH_LONG).show();
+                    "Data Harus Diisi Semua!", Toast.LENGTH_LONG).show();
         }else{
             mydb.insertContact(nomhs.getText().toString(), nama.getText().toString(),phone.getText().toString());
             Toast.makeText(getApplicationContext(),

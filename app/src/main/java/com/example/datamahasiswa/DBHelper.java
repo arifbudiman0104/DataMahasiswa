@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
         db.execSQL(
-                "create table mahasiswa " + "(id integer primary key, nim text,namatext,phone text)"
+                "create table mahasiswa " + "(id integer primary key, nim text,nama text,phone text)"
         );
     }
 
