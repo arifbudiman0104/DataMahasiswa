@@ -57,7 +57,8 @@
             android:layout_marginTop="60dp"
             android:layout_marginBottom="49dp"
             android:onClick="run"
-            android:text="@string/save" />
+            android:text="@string/save"
+            tools:ignone="Onclick"/>
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
