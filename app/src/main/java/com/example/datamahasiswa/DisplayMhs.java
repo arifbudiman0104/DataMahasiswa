@@ -10,16 +10,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class DisplayMhs extends AppCompatActivity {
     int from_Where_I_Am_Coming = 0;
     private DBHelper mydb ;
 
-    TextView nomhs ;
-    TextView phone;
-    TextView nama;
+    EditText nomhs ;
+    EditText phone;
+    EditText nama;
 
     int id_To_Update = 0;
 
@@ -27,10 +29,11 @@ public class DisplayMhs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
         setContentView(R.layout.activity_display_mhs);
-        nomhs = (TextView) findViewById(R.id.editTextNim);
-        nama = (TextView) findViewById(R.id.editTextName);
-        phone = (TextView) findViewById(R.id.editTextPhone);
+        nomhs = (EditText) findViewById(R.id.editTextNim);
+        nama = (EditText) findViewById(R.id.editTextName);
+        phone = (EditText) findViewById(R.id.editTextPhone);
 
         mydb = new DBHelper(this);
         Bundle extras = getIntent().getExtras();
@@ -85,6 +88,22 @@ public class DisplayMhs extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public void run(View view){
+        if(nomhs.getText().toString().equals("")||
+            nama.getText().toString().equals("")||
+                phone.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(),
+                    "DataHarus Diisi Semua!", Toast.LENGTH_LONG).show();
+        }else{
+            mydb.insertContact(nomhs.getText().toString(), nama.getText().toString(),phone.getText().toString());
+            Toast.makeText(getApplicationContext(),
+                    "insert data berhasil", Toast.LENGTH_LONG).show();
+
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
     }
 
 }
